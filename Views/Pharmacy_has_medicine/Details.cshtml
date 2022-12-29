@@ -1,0 +1,50 @@
+﻿@model лр5.Models.Pharmacy_has_medicine
+
+@{
+    ViewBag.Title = "Подробности";
+}
+
+<h2>Подробности</h2>
+
+<div>
+    <h4>Лекарства в аптеках</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quntity_of_packs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quntity_of_packs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost_of_pack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost_of_pack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medicine.name_of_medicine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medicine.name_of_medicine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pharmacy.namePharmacy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pharmacy.namePharmacy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.id_Pharmacy_has_medicine }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

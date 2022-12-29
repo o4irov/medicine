@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2cd37c70a22e4930a4ca8d28df517e37" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="MedicineModel.Hospital" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Hospital_need_medicine" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Medicine" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Pharmacy" Width="1.5" PointX="4.875" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Pharmacy_has_medicine" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="MedicineModel.FK__Hospital___Hospi__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK__Hospital___Medic__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK__Pharmacy___Medic__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK__Pharmacy___Pharm__74AE54BC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

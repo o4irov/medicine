@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<лр5.Models.seaq2_Result>
+
+<meta charset="utf-8">
+
+@{
+    ViewBag.Title = "Лекарства с данным названием, нужные больницам";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idHospital)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name_of_medicine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity_of_packs)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.idHospital)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.name_of_medicine)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.quantity_of_packs)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!--@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}-->

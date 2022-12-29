@@ -1,0 +1,19 @@
+﻿@model IEnumerable<лр5.Models.seaq_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<hr />
+<form action="~/Views/seaq2_Result/seaqQuery.cshtml" class="form-horizontal">
+    <div class="form-group">
+        <label for="name" class="control-label col-md-2">Название лекарства</label>
+        <input type="text" name="name" id="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Получить таблицу" class="btn btn-default" />
+        </div>
+    </div>
+</form>

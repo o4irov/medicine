@@ -1,0 +1,26 @@
+﻿@model лр5.Models.Hospital
+
+@{
+    ViewBag.Title = "Подробности";
+}
+
+<h2>Подробности</h2>
+
+<div>
+    <h4>Больница</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.addresHospital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addresHospital)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.idHospital }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<лр5.Models.Pharmacy>
+
+@{
+    ViewBag.Title = "Аптеки";
+}
+
+<h2>Аптеки</h2>
+
+<p>
+    @Html.ActionLink("Создать", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.namePharmacy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.addresPharmacy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.namePharmacy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.addresPharmacy)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.idPharmacy }) |
+            @Html.ActionLink("Подробности", "Details", new { id=item.idPharmacy }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.idPharmacy })
+        </td>
+    </tr>
+}
+
+</table>

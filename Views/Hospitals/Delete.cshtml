@@ -1,0 +1,32 @@
+﻿@model лр5.Models.Hospital
+
+@{
+    ViewBag.Title = "Удалить";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы действительно хотите удалить эту запись?</h3>
+<div>
+    <h4>Больница</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.addresHospital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addresHospital)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

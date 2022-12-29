@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MedicineModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="idHospital" />
+          </Key>
+          <Property Name="idHospital" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addresHospital" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Hospital_need_medicine">
+          <Key>
+            <PropertyRef Name="id_Hospital_need_medicine" />
+          </Key>
+          <Property Name="id_Hospital_need_medicine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Medicine_idMedicine" Type="int" Nullable="false" />
+          <Property Name="Hospital_idHospital" Type="int" Nullable="false" />
+          <Property Name="quantity_of_packs" Type="int" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="idMedicine" />
+          </Key>
+          <Property Name="idMedicine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of_medicine" Type="nvarchar" MaxLength="45" />
+          <Property Name="firm_of_medicine" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Pharmacy">
+          <Key>
+            <PropertyRef Name="idPharmacy" />
+          </Key>
+          <Property Name="idPharmacy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namePharmacy" Type="nvarchar" MaxLength="45" />
+          <Property Name="addresPharmacy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Pharmacy_has_medicine">
+          <Key>
+            <PropertyRef Name="id_Pharmacy_has_medicine" />
+          </Key>
+          <Property Name="id_Pharmacy_has_medicine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Medicine_idMedicine" Type="int" Nullable="false" />
+          <Property Name="Pharmacy_idPharmacy" Type="int" Nullable="false" />
+          <Property Name="quntity_of_packs" Type="int" />
+          <Property Name="cost_of_pack" Type="int" />
+        </EntityType>
+        <Association Name="FK__Hospital___Hospi__2E1BDC42">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="Hospital_need_medicine" Type="Self.Hospital_need_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="idHospital" />
+            </Principal>
+            <Dependent Role="Hospital_need_medicine">
+              <PropertyRef Name="Hospital_idHospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hospital___Medic__2F10007B">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+          <End Role="Hospital_need_medicine" Type="Self.Hospital_need_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="idMedicine" />
+            </Principal>
+            <Dependent Role="Hospital_need_medicine">
+              <PropertyRef Name="Medicine_idMedicine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pharmacy___Medic__2B3F6F97">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+          <End Role="Pharmacy_has_medicine" Type="Self.Pharmacy_has_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="idMedicine" />
+            </Principal>
+            <Dependent Role="Pharmacy_has_medicine">
+              <PropertyRef Name="Medicine_idMedicine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pharmacy___Pharm__74AE54BC">
+          <End Role="Pharmacy" Type="Self.Pharmacy" Multiplicity="1" />
+          <End Role="Pharmacy_has_medicine" Type="Self.Pharmacy_has_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pharmacy">
+              <PropertyRef Name="idPharmacy" />
+            </Principal>
+            <Dependent Role="Pharmacy_has_medicine">
+              <PropertyRef Name="Pharmacy_idPharmacy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="seaq" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="price" Type="int" Mode="In" />
+          <Parameter Name="sravn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="seaq2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name_of_medecine" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище MedicineModelContainer">
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospital_need_medicine" EntityType="Self.Hospital_need_medicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pharmacy" EntityType="Self.Pharmacy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pharmacy_has_medicine" EntityType="Self.Pharmacy_has_medicine" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Hospital___Hospi__2E1BDC42" Association="Self.FK__Hospital___Hospi__2E1BDC42">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Hospital_need_medicine" EntitySet="Hospital_need_medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hospital___Medic__2F10007B" Association="Self.FK__Hospital___Medic__2F10007B">
+            <End Role="Medicine" EntitySet="Medicine" />
+            <End Role="Hospital_need_medicine" EntitySet="Hospital_need_medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pharmacy___Medic__2B3F6F97" Association="Self.FK__Pharmacy___Medic__2B3F6F97">
+            <End Role="Medicine" EntitySet="Medicine" />
+            <End Role="Pharmacy_has_medicine" EntitySet="Pharmacy_has_medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pharmacy___Pharm__74AE54BC" Association="Self.FK__Pharmacy___Pharm__74AE54BC">
+            <End Role="Pharmacy" EntitySet="Pharmacy" />
+            <End Role="Pharmacy_has_medicine" EntitySet="Pharmacy_has_medicine" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedicineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="idHospital" />
+          </Key>
+          <Property Name="idHospital" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addresHospital" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hospital_need_medicine" Relationship="Self.FK__Hospital___Hospi__2E1BDC42" FromRole="Hospital" ToRole="Hospital_need_medicine" />
+        </EntityType>
+        <EntityType Name="Hospital_need_medicine">
+          <Key>
+            <PropertyRef Name="id_Hospital_need_medicine" />
+          </Key>
+          <Property Name="id_Hospital_need_medicine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Medicine_idMedicine" Type="Int32" Nullable="false" />
+          <Property Name="Hospital_idHospital" Type="Int32" Nullable="false" />
+          <Property Name="quantity_of_packs" Type="Int32" />
+          <NavigationProperty Name="Hospital" Relationship="Self.FK__Hospital___Hospi__2E1BDC42" FromRole="Hospital_need_medicine" ToRole="Hospital" />
+          <NavigationProperty Name="Medicine" Relationship="Self.FK__Hospital___Medic__2F10007B" FromRole="Hospital_need_medicine" ToRole="Medicine" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="idMedicine" />
+          </Key>
+          <Property Name="idMedicine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of_medicine" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="firm_of_medicine" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hospital_need_medicine" Relationship="Self.FK__Hospital___Medic__2F10007B" FromRole="Medicine" ToRole="Hospital_need_medicine" />
+          <NavigationProperty Name="Pharmacy_has_medicine" Relationship="Self.FK__Pharmacy___Medic__2B3F6F97" FromRole="Medicine" ToRole="Pharmacy_has_medicine" />
+        </EntityType>
+        <EntityType Name="Pharmacy">
+          <Key>
+            <PropertyRef Name="idPharmacy" />
+          </Key>
+          <Property Name="idPharmacy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namePharmacy" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="addresPharmacy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pharmacy_has_medicine" Relationship="Self.FK__Pharmacy___Pharm__74AE54BC" FromRole="Pharmacy" ToRole="Pharmacy_has_medicine" />
+        </EntityType>
+        <EntityType Name="Pharmacy_has_medicine">
+          <Key>
+            <PropertyRef Name="id_Pharmacy_has_medicine" />
+          </Key>
+          <Property Name="id_Pharmacy_has_medicine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Medicine_idMedicine" Type="Int32" Nullable="false" />
+          <Property Name="Pharmacy_idPharmacy" Type="Int32" Nullable="false" />
+          <Property Name="quntity_of_packs" Type="Int32" />
+          <Property Name="cost_of_pack" Type="Int32" />
+          <NavigationProperty Name="Medicine" Relationship="Self.FK__Pharmacy___Medic__2B3F6F97" FromRole="Pharmacy_has_medicine" ToRole="Medicine" />
+          <NavigationProperty Name="Pharmacy" Relationship="Self.FK__Pharmacy___Pharm__74AE54BC" FromRole="Pharmacy_has_medicine" ToRole="Pharmacy" />
+        </EntityType>
+        <Association Name="FK__Hospital___Hospi__2E1BDC42">
+          <End Role="Hospital" Type="Self.Hospital" Multiplicity="1" />
+          <End Role="Hospital_need_medicine" Type="Self.Hospital_need_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="idHospital" />
+            </Principal>
+            <Dependent Role="Hospital_need_medicine">
+              <PropertyRef Name="Hospital_idHospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hospital___Medic__2F10007B">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+          <End Role="Hospital_need_medicine" Type="Self.Hospital_need_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="idMedicine" />
+            </Principal>
+            <Dependent Role="Hospital_need_medicine">
+              <PropertyRef Name="Medicine_idMedicine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pharmacy___Medic__2B3F6F97">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+          <End Role="Pharmacy_has_medicine" Type="Self.Pharmacy_has_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="idMedicine" />
+            </Principal>
+            <Dependent Role="Pharmacy_has_medicine">
+              <PropertyRef Name="Medicine_idMedicine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pharmacy___Pharm__74AE54BC">
+          <End Role="Pharmacy" Type="Self.Pharmacy" Multiplicity="1" />
+          <End Role="Pharmacy_has_medicine" Type="Self.Pharmacy_has_medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pharmacy">
+              <PropertyRef Name="idPharmacy" />
+            </Principal>
+            <Dependent Role="Pharmacy_has_medicine">
+              <PropertyRef Name="Pharmacy_idPharmacy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedicineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" />
+          <EntitySet Name="Hospital_need_medicine" EntityType="Self.Hospital_need_medicine" />
+          <EntitySet Name="Medicine" EntityType="Self.Medicine" />
+          <EntitySet Name="Pharmacy" EntityType="Self.Pharmacy" />
+          <EntitySet Name="Pharmacy_has_medicine" EntityType="Self.Pharmacy_has_medicine" />
+          <AssociationSet Name="FK__Hospital___Hospi__2E1BDC42" Association="Self.FK__Hospital___Hospi__2E1BDC42">
+            <End Role="Hospital" EntitySet="Hospital" />
+            <End Role="Hospital_need_medicine" EntitySet="Hospital_need_medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hospital___Medic__2F10007B" Association="Self.FK__Hospital___Medic__2F10007B">
+            <End Role="Medicine" EntitySet="Medicine" />
+            <End Role="Hospital_need_medicine" EntitySet="Hospital_need_medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pharmacy___Medic__2B3F6F97" Association="Self.FK__Pharmacy___Medic__2B3F6F97">
+            <End Role="Medicine" EntitySet="Medicine" />
+            <End Role="Pharmacy_has_medicine" EntitySet="Pharmacy_has_medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pharmacy___Pharm__74AE54BC" Association="Self.FK__Pharmacy___Pharm__74AE54BC">
+            <End Role="Pharmacy" EntitySet="Pharmacy" />
+            <End Role="Pharmacy_has_medicine" EntitySet="Pharmacy_has_medicine" />
+          </AssociationSet>
+          <FunctionImport Name="seaq" ReturnType="Collection(MedicineModel.seaq_Result)">
+            <Parameter Name="price" Mode="In" Type="Int32" />
+            <Parameter Name="sravn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="seaq2" ReturnType="Collection(MedicineModel.seaq2_Result)">
+            <Parameter Name="name_of_medecine" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="seaq_Result">
+          <Property Type="String" Name="namePharmacy" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="name_of_medicine" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="quntity_of_packs" Nullable="true" />
+          <Property Type="Int32" Name="cost_of_pack" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="seaq2_Result">
+          <Property Type="Int32" Name="idHospital" Nullable="false" />
+          <Property Type="String" Name="name_of_medicine" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="quantity_of_packs" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MedicineModelContainer" CdmEntityContainer="MedicineEntities">
+          <EntitySetMapping Name="Hospital">
+            <EntityTypeMapping TypeName="MedicineModel.Hospital">
+              <MappingFragment StoreEntitySet="Hospital">
+                <ScalarProperty Name="idHospital" ColumnName="idHospital" />
+                <ScalarProperty Name="addresHospital" ColumnName="addresHospital" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospital_need_medicine">
+            <EntityTypeMapping TypeName="MedicineModel.Hospital_need_medicine">
+              <MappingFragment StoreEntitySet="Hospital_need_medicine">
+                <ScalarProperty Name="id_Hospital_need_medicine" ColumnName="id_Hospital_need_medicine" />
+                <ScalarProperty Name="Medicine_idMedicine" ColumnName="Medicine_idMedicine" />
+                <ScalarProperty Name="Hospital_idHospital" ColumnName="Hospital_idHospital" />
+                <ScalarProperty Name="quantity_of_packs" ColumnName="quantity_of_packs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicine">
+            <EntityTypeMapping TypeName="MedicineModel.Medicine">
+              <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="idMedicine" ColumnName="idMedicine" />
+                <ScalarProperty Name="name_of_medicine" ColumnName="name_of_medicine" />
+                <ScalarProperty Name="firm_of_medicine" ColumnName="firm_of_medicine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pharmacy">
+            <EntityTypeMapping TypeName="MedicineModel.Pharmacy">
+              <MappingFragment StoreEntitySet="Pharmacy">
+                <ScalarProperty Name="idPharmacy" ColumnName="idPharmacy" />
+                <ScalarProperty Name="namePharmacy" ColumnName="namePharmacy" />
+                <ScalarProperty Name="addresPharmacy" ColumnName="addresPharmacy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pharmacy_has_medicine">
+            <EntityTypeMapping TypeName="MedicineModel.Pharmacy_has_medicine">
+              <MappingFragment StoreEntitySet="Pharmacy_has_medicine">
+                <ScalarProperty Name="id_Pharmacy_has_medicine" ColumnName="id_Pharmacy_has_medicine" />
+                <ScalarProperty Name="Medicine_idMedicine" ColumnName="Medicine_idMedicine" />
+                <ScalarProperty Name="Pharmacy_idPharmacy" ColumnName="Pharmacy_idPharmacy" />
+                <ScalarProperty Name="quntity_of_packs" ColumnName="quntity_of_packs" />
+                <ScalarProperty Name="cost_of_pack" ColumnName="cost_of_pack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="seaq" FunctionName="Хранилище MedicineModel.seaq">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedicineModel.seaq_Result">
+                <ScalarProperty Name="namePharmacy" ColumnName="namePharmacy" />
+                <ScalarProperty Name="name_of_medicine" ColumnName="name_of_medicine" />
+                <ScalarProperty Name="quntity_of_packs" ColumnName="quntity_of_packs" />
+                <ScalarProperty Name="cost_of_pack" ColumnName="cost_of_pack" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="seaq2" FunctionName="Хранилище MedicineModel.seaq2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedicineModel.seaq2_Result">
+                <ScalarProperty Name="idHospital" ColumnName="idHospital" />
+                <ScalarProperty Name="name_of_medicine" ColumnName="name_of_medicine" />
+                <ScalarProperty Name="quantity_of_packs" ColumnName="quantity_of_packs" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

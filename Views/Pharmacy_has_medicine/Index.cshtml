@@ -1,0 +1,51 @@
+﻿@model IEnumerable<лр5.Models.Pharmacy_has_medicine>
+
+@{
+    ViewBag.Title = "Лекарства в аптеках";
+}
+
+<h2>В аптеках имеются лекарства</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.quntity_of_packs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost_of_pack)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medicine.name_of_medicine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pharmacy.namePharmacy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.quntity_of_packs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost_of_pack)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medicine.name_of_medicine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pharmacy.namePharmacy)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.id_Pharmacy_has_medicine }) |
+            @Html.ActionLink("Подробности", "Details", new { id=item.id_Pharmacy_has_medicine }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_Pharmacy_has_medicine })
+        </td>
+    </tr>
+}
+
+</table>

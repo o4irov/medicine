@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<лр5.Models.seaq_Result>
+
+<meta charset="utf-8">
+
+@{
+    ViewBag.Title = "Лекарства больше(меньше) цены | Лекарства в аптеках";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.namePharmacy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name_of_medicine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quntity_of_packs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost_of_pack)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.namePharmacy)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.name_of_medicine)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.quntity_of_packs)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.cost_of_pack)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!--@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}-->
