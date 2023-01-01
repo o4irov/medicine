@@ -14,13 +14,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idHospital)
+            Номер больницы
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.name_of_medicine)
+            Название лекарства
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.quantity_of_packs)
+            Количество упаковок
         </th>
     </tr>
 
@@ -28,13 +28,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayNameFor(model => model.idHospital)
+                @Html.DisplayFor(modelItem => item.idHospital)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.name_of_medicine)
+                @Html.DisplayFor(modelItem => item.name_of_medicine)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.quantity_of_packs)
+                @Html.DisplayFor(modelItem => item.quantity_of_packs)
             </td>
         </tr>
     }

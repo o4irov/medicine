@@ -2,19 +2,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<лр5.Models.seaq_Result>
+@model IEnumerable<лр5.Models.seaq2_Result>
 
 <meta charset="utf-8">
 
 @{
-    ViewBag.Title = "Лекарства больше(меньше) цены | Лекарства в аптеках";
+    ViewBag.Title = "Лекарства с данным названием, нужные больницам";
 }
 
 
 <table class="table">
     <tr>
         <th>
-            Название аптеки
+            Номер больницы
         </th>
         <th>
             Название лекарства
@@ -22,25 +22,19 @@
         <th>
             Количество упаковок
         </th>
-        <th>
-            Цена за упаковку
-        </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.namePharmacy)
+                @Html.DisplayFor(modelItem => item.idHospital)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.name_of_medicine)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.quntity_of_packs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cost_of_pack)
+                @Html.DisplayFor(modelItem => item.quantity_of_packs)
             </td>
         </tr>
     }

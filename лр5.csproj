@@ -132,6 +132,9 @@
     <Compile Include="Controllers\MedicinesController.cs" />
     <Compile Include="Controllers\PharmaciesController.cs" />
     <Compile Include="Controllers\Pharmacy_has_medicineController.cs" />
+    <Compile Include="Controllers\seaq2_ResultController.cs" />
+    <Compile Include="Controllers\seaq_Result2Controller.cs" />
+    <Compile Include="Controllers\seaq_ResultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,7 +272,9 @@
     <Content Include="Views\seaq_Result\seaqQuery.cshtml" />
     <Content Include="Views\seaq_Result\Index.cshtml" />
     <Content Include="Views\seaq2_Result\Index.cshtml" />
-    <Content Include="Views\seaq2_Result\seaqQuery.cshtml" />
+    <Content Include="Views\seaq2_Result\seaq2Query.cshtml" />
+    <Content Include="Views\seaq_Result2\Index.cshtml" />
+    <Content Include="Views\seaq_Result2\seaq2Query.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
